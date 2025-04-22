@@ -23,15 +23,10 @@ public class Ejercicio_2 {
         String passwordIngresada = t.nextLine();
 
         // Consulta SQL para verificar el usuario y la contrase?a
-        String consultaSQL = "SELECT * FROM users WHERE username = ? AND password = ?";
+        String consultaSQL = "SELECT * FROM users WHERE username = '"+usuarioIngresado+"' AND password = '"+passwordIngresada+"'";
 
         try (Connection conexion = DriverManager.getConnection(url, usuario, password);
              PreparedStatement stmt = conexion.prepareStatement(consultaSQL)) {
-
-            // Establecer los valores
-            stmt.setString(1, usuarioIngresado);
-            stmt.setString(2, passwordIngresada);
-
             // Mostrar la consulta SQL
             System.out.println("Consulta ejecutada: " + stmt);
 
@@ -46,7 +41,7 @@ public class Ejercicio_2 {
             }
 
         } catch (Exception e) {
-            System.err.println("Erro al conectarse a la base de datos");
+            System.err.println("Error al conectarse a la base de datos");
             e.getMessage();
         }
     }
