@@ -11,18 +11,18 @@ public class Ejercicio_2 {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/seguridad_db"; 
         String usuario = "root"; // Usuario
-        String password = "root"; // contrase?a
+        String password = "root"; // contraseña
 
         Scanner t = new Scanner(System.in);
 
-        // Solicitar usuario y contrase?a desde la consola
+        // Solicitar usuario y contraseña desde la consola
         System.out.print("Introduce tu nombre de usuario: ");
         String usuarioIngresado = t.nextLine();
 
-        System.out.print("Introduce tu contrase?a: ");
+        System.out.print("Introduce tu contraseña: ");
         String passwordIngresada = t.nextLine();
 
-        // Consulta SQL para verificar el usuario y la contrase?a
+        // Consulta SQL para verificar el usuario y la contraseña
         String consultaSQL = "SELECT * FROM users WHERE username = '"+usuarioIngresado+"' AND password = '"+passwordIngresada+"'";
 
         try (Connection conexion = DriverManager.getConnection(url, usuario, password);
@@ -33,11 +33,11 @@ public class Ejercicio_2 {
             // Ejecutar la consulta
             ResultSet rs = stmt.executeQuery();
 
-            // Verificar si se encontr� el usuario
+            // Verificar si se encontró el usuario
             if (rs.next()) {
-                System.out.println("Inicio de sesi�n correcto.");
+                System.out.println("Inicio de sesión correcto.");
             } else {
-                System.out.println("Usuario o contrase?a incorrectos.");
+                System.out.println("Usuario o contraseña incorrectos.");
             }
 
         } catch (Exception e) {
